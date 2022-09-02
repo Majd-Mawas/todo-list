@@ -34,6 +34,9 @@ function App() {
   });
 
   function handleCheck(ids) {
+    if(listItem===null)
+      return
+      else{
     var count = 0
     for (let i = 0; i < listItem.length; i++) {
       if (listItem[i].id === ids) {
@@ -43,11 +46,13 @@ function App() {
         doneItem.unshift(listItem[i])
         if (i > -1) {
           listItem.splice(i, 1);
-        }
+        
+      }
       }
       doneItem.reverse()
       setCheck(listItem[count])
     }
+  }
   }
 
   
