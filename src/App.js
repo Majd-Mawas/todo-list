@@ -34,11 +34,13 @@ function App() {
   });
 
   function handleCheck(ids) {
-    if(listItem===null)
+    if(listItem===[])
       return
       else{
     var count = 0
     for (let i = 0; i < listItem.length; i++) {
+      if(listItem===[])
+      break;
       if (listItem[i].id === ids) {
         listItem[i].done = true;
         allItem[i].done = true;
@@ -46,7 +48,6 @@ function App() {
         doneItem.unshift(listItem[i])
         if (i > -1) {
           listItem.splice(i, 1);
-        
       }
       }
       doneItem.reverse()
