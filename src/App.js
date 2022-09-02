@@ -176,16 +176,16 @@ function App() {
         <Routes>
 
           <Route
-            path="/"
+            path="todo-list/"
             element={<Todo item={listItem} change={handleCheck} />}
           />
 
           <Route 
-            path="done" 
+            path="todo-list/done" 
             element={<Done  item={doneItem}/>} />
           <Route 
 
-            path="all" 
+            path="todo-list/all" 
             element={<All item={allItem} />} />
 
         </Routes>
