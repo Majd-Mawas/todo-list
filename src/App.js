@@ -10,7 +10,7 @@ import All from "./pages/All";
 import Done from "./pages/Done";
 import { nanoid } from "nanoid";
 var click = false;
-var listItem = []
+var listItem = [{item:task,id:nanoid(),done:false}]
 var allItem = []
 var doneItem = []
 listItem = JSON.parse(localStorage.getItem('todo'))
@@ -18,6 +18,9 @@ allItem = JSON.parse(localStorage.getItem('all'))
 doneItem = JSON.parse(localStorage.getItem('done'))
 
 function App() {
+
+  listItem = [{item:task,id:nanoid(),done:false}]
+  allItem = [{item:task,id:nanoid(),done:false}]
 
   localStorage.setItem('all', JSON.stringify(allItem));
   localStorage.setItem('todo', JSON.stringify(listItem));
