@@ -28,8 +28,8 @@ function App() {
   const [text, setText] = useState("");
   const [check, setCheck] = useState('');
   const [items, setItems] = React.useState({
-    item: "",
-    id: "",
+    item: "s ",
+    id: "s ",
     done: false,
   });
 
