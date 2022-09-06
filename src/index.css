@@ -57,11 +57,18 @@ a{
   right: 1em;
   bottom: 1em;
   /* text-decoration:none; */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
 }
 
 .line{
-  width: 80%;
+  width: 100%;
   text-align: center;
   height: 1px;
   background-color: rgb(143, 143, 143);
+}
+
+.button-group{
+  display: flex;
+  justify-content: center;
 }
