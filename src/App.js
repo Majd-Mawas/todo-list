@@ -10,7 +10,7 @@ import All from "./pages/All";
 import Done from "./pages/Done";
 import { nanoid } from "nanoid";
 var click = false;
-var listItem = [{item:task,id:nanoid(),done:false}]
+var listItem = []
 var allItem = []
 var doneItem = []
 listItem = JSON.parse(localStorage.getItem('todo'))
@@ -18,9 +18,6 @@ allItem = JSON.parse(localStorage.getItem('all'))
 doneItem = JSON.parse(localStorage.getItem('done'))
 
 function App() {
-
-  listItem = [{item:task,id:nanoid(),done:false}]
-  allItem = [{item:task,id:nanoid(),done:false}]
 
   localStorage.setItem('all', JSON.stringify(allItem));
   localStorage.setItem('todo', JSON.stringify(listItem));
@@ -37,9 +34,7 @@ function App() {
   });
 
   function handleCheck(ids) {
-    if(listItem===[])
-      return
-      else{
+    doneItem = doneItem || []
     var count = 0
     for (let i = 0; i < listItem.length; i++) {
       if(listItem===[])
@@ -56,7 +51,6 @@ function App() {
       doneItem.reverse()
       setCheck(listItem[count])
     }
-  }
   }
 
   
@@ -76,10 +70,19 @@ function App() {
   }
 
   if (click) {
+    try{
+      listItem = listItem || []
+      allItem = allItem || []
     listItem.unshift(items);
     allItem.unshift(items)
     click = false;
     setText("");
+    setItems('')
+    setTextField('')
+  }
+  catch{
+    console.log("error")
+  }
   }
 
   
@@ -132,6 +135,7 @@ function App() {
           Create
         </Button>
       </div>
+      <div className="button-group">
       <ButtonGroup
         variant="contained"
         aria-label="outlined primary button group"
@@ -139,53 +143,63 @@ function App() {
           display: "grid",
           gridTemplateColumns: "auto auto auto",
           gap: "0.5em",
-          width: "100vw",
+          width: "94vw",
+          margin:'0 0.5em',
           boxShadow: "none",
+          // justifyContent:'space-between'
+
         }}
       >
-        <Link to="/" sx={{ textDecoration: "none" }}>
+        <Link to="/todo-list/" sx={{ textDecoration: "none" }}>
           <Button
             sx={{
               backgroundColor: "skyblue",
               color: "#333",
               width: "90%",
               textDecoration: "none !important",
+             boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
+
             }}
           >
             TO DO
           </Button>
         </Link>
 
-        <Link to="/done">
+        <Link to="/todo-list/done">
           <Button
-            sx={{ backgroundColor: "skyblue", color: "#333", width: "90%" }}
+            sx={{ backgroundColor: "skyblue", color: "#333", width: "90%",
+            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
+          }}
           >
             Done
           </Button>
         </Link>
 
-        <Link to="/all">
+        <Link to="/todo-list/all">
           <Button
-            sx={{ backgroundColor: "skyblue", color: "#333", width: "90%" }}
+            sx={{ backgroundColor: "skyblue", color: "#333", width: "90%",
+            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
+          }}
           >
             All
           </Button>
         </Link>
       </ButtonGroup>
+      </div>
       <div className="lists">
         <Routes>
 
           <Route
-            path="todo-list/"
+            path="/todo-list/"
             element={<Todo item={listItem} change={handleCheck} />}
           />
 
           <Route 
-            path="todo-list/done" 
+            path="/todo-list/done" 
             element={<Done  item={doneItem}/>} />
           <Route 
 
-            path="todo-list/all" 
+            path="/todo-list/all" 
             element={<All item={allItem} />} />
 
         </Routes>
@@ -200,3 +214,4 @@ function App() {
 }
 
 export default App;
+
