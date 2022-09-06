@@ -150,7 +150,7 @@ function App() {
 
         }}
       >
-        <Link to="/todo-list/" sx={{ textDecoration: "none" }}>
+        <Link to="/" sx={{ textDecoration: "none" }}>
           <Button
             sx={{
               backgroundColor: "skyblue",
@@ -165,7 +165,7 @@ function App() {
           </Button>
         </Link>
 
-        <Link to="/todo-list/done">
+        <Link to="/done">
           <Button
             sx={{ backgroundColor: "skyblue", color: "#333", width: "90%",
             boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
@@ -175,7 +175,7 @@ function App() {
           </Button>
         </Link>
 
-        <Link to="/todo-list/all">
+        <Link to="/all">
           <Button
             sx={{ backgroundColor: "skyblue", color: "#333", width: "90%",
             boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
@@ -190,23 +190,23 @@ function App() {
         <Routes>
 
           <Route
-            path="/todo-list/"
+            path="/"
             element={<Todo item={listItem} change={handleCheck} />}
           />
 
           <Route 
-            path="/todo-list/done" 
+            path="/done" 
             element={<Done  item={doneItem}/>} />
           <Route 
 
-            path="/todo-list/all" 
+            path="/all" 
             element={<All item={allItem} />} />
 
         </Routes>
       </div>
       <Button
         className="btn"
-            sx={{ backgroundColor: "skyblue", color: "#333",  position: 'absolute',right:' 1em',bottom: '1em '}} 
+            sx={{ backgroundColor: "skyblue", color: "#333",right:' 1em',bottom: '1em '}} 
             onClick={()=>handleRemove(true)}>Remove All</Button>
     </div>
   );
